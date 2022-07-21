@@ -17,10 +17,54 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Medicine.init({
-    name: DataTypes.STRING,
-    company: DataTypes.STRING,
-    regDate: DataTypes.DATE,
-    description: DataTypes.STRING
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: "name is required"
+        },
+        notNull: {
+          msg: "name is required"
+        }
+      }
+    },
+    company: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: "company name is required"
+        },
+        notNull: {
+          msg: "company name is required"
+        }
+      }
+    },
+    regDate: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: "date is required"
+        },
+        notNull: {
+          msg: "date is required"
+        }
+      }
+    },
+    description: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: "description is required"
+        },
+        notNull: {
+          msg: "description is required"
+        }
+      }
+    }
   }, {
     sequelize,
     modelName: 'Medicine',

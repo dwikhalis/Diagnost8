@@ -4,30 +4,37 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <%- include("./navbar/headnavbar.ejs"); %>
     <title>Diagnost8</title>
 </head>
 <body>
-    <a href="/"><button>Home</button></a>
-    <a href="/diseases"><button>Diseases</button></a>
-    <a href="/medicines"><button>Medicines</button></a>
-    <a href="/diseases/add"><button>Add Diseases</button></a>
-    <a href="/medicines/add"><button>Add Medicine</button></a>
-    <h1>Add Diseases</h1>
+    <%- include("./navbar/bodynavbar.ejs"); %>
+    <%- include("./navbar/navbarFull.ejs"); %>
+    <div class="container">
+        <div class="mt-4 ml-5 mr-5 mb-4">
+    <h1>Add Medicine</h1>
     <form action="/medicines/add" method="post">
         <label for="name">Name</label><br>
-        <input type="text" name="name" required>
+        <input class="form-control" type="text" name="name">
         <br><br>
         <label for="company">Company</label><br>
-        <input type="text" name="company" required>
+        <input class="form-control" type="text" name="company">
         <br><br>
         <label for="regDate">Registration Date</label><br>
-        <input type="Date" name="regDate" required>
+        <input class="form-control" type="datetime-local" name="regDate">
         <br><br>
         <label for="description">Description</label><br>
-        <textarea name="description" required></textarea>
+        <textarea class="form-control" name="description"></textarea>
         <br><br>
-        <input type="submit" value="Add Medicine">
+        <input class="form-control" type="submit" value="Add Medicine">
     </form>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
+<script>
+    flatpickr("input[type=datetime-local]", {});
+</script>
 </body>
 </html>

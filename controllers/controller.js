@@ -1,5 +1,5 @@
+const flatpickr = require("flatpickr");
 
-const { Op } = require("sequelize")
 const { Disease, Log, Medicine, User, Profile } = require("../models")
 
 class Controller {
@@ -9,31 +9,13 @@ class Controller {
     }
 
     static diseaseList(req, res) {
-
-        if (Object.values(req.query).length > 0) {
-            Disease.findAll({
-                where: {
-                    diagnosis: {
-                        [Op.iLike]: "%" + req.query.search + "%"
-                    }
-                }
+        Disease.findAll({})
+            .then(data => {
+                res.render("diseases", { data })
             })
-                .then(data => {
-                    res.render("diseases", { data })
-                })
-                .catch((err) => {
-                    res.send(err)
-                })
-        } else {
-            Disease.findAll({})
-                .then(data => {
-                    res.render("diseases", { data })
-                })
-                .catch((err) => {
-                    res.send(err)
-                })
-        }
-
+            .catch((err) => {
+                res.send(err)
+            })
     }
 
     static diseaseDetail(req, res) {
@@ -69,30 +51,13 @@ class Controller {
     }
 
     static medicineList(req, res) {
-
-        if (Object.values(req.query).length > 0) {
-            Medicine.findAll({
-                where: {
-                    name: {
-                        [Op.iLike]: "%" + req.query.search + "%"
-                    }
-                }
+        Medicine.findAll({})
+            .then(data => {
+                res.render("medicines", { data })
             })
-                .then(data => {
-                    res.render("medicines", { data })
-                })
-                .catch((err) => {
-                    res.send(err)
-                })
-        } else {
-            Medicine.findAll({})
-                .then(data => {
-                    res.render("medicines", { data })
-                })
-                .catch((err) => {
-                    res.send(err)
-                })
-        }
+            .catch((err) => {
+                res.send(err)
+            })
     }
 
     static diseaseAdd(req, res) {
@@ -100,10 +65,19 @@ class Controller {
     }
 
     static diseaseAddPost(req, res) {
-        Disease.create(req.body)
-            .then(res.redirect("/diseases"))
-            .catch((err) => {
-                res.send(err)
+        const {name, diagnosis, procedure, status} = req.body
+        const input = {name, diagnosis, procedure, status}
+
+        Disease.create(input)
+        .then(() => {res.redirect("/diseases")})
+        .catch((err) => {
+                if(err.name === "SequelizeValidationError") {
+                    const errors = err.errors.map((el) => el.message)
+                    res.redirect(`/diseases/add?errors=${errors}`)
+                }
+                else {
+                    res.send(err)
+                }
             })
     }
 
@@ -113,22 +87,44 @@ class Controller {
                 id: req.params.id
             }
         })
-            .then(res.redirect("/diseases"))
+            .then(
+                Disease.findAll({})
+                    .then(data => {
+                        res.render("diseases", { data })
+                    })
+                    .catch((err) => {
+                        res.send(err)
+                    })
+            )
             .catch((err) => {
                 res.send(err)
             })
     }
 
     static medicineAdd(req, res) {
-        res.render("medicineAdd")
+        Medicine.findAll({})
+        .then((medicines) => {
+            res.render("medicineAdd", {medicines, flatpickr})
+        })
+        .catch((err) => {
+            res.send(err)
+        })
     }
 
     static medicineAddPost(req, res) {
-        Medicine.create(req.body)
-            .then(res.redirect("/medicines"))
-            .catch((err) => {
+        const {name, company, regDate, description } = req.body
+        const input = { name, company, regDate, description }
+        Medicine.create(input)
+        .then(() => {res.redirect("/medicines")})
+        .catch((err) => {
+            if(err.name === "SequelizeValidationError") {
+                const errors = err.errors.map((el) => el.message)
+                res.redirect(`/medicines/add?errors=${errors}`)
+            }
+            else {
                 res.send(err)
-            })
+            }
+        })
     }
 
     static medicineDelete(req, res) {
@@ -137,7 +133,15 @@ class Controller {
                 id: req.params.id
             }
         })
-            .then(res.redirect("/medicines"))
+            .then(
+                Medicine.findAll({})
+                    .then(data => {
+                        res.render("medicines", { data })
+                    })
+                    .catch((err) => {
+                        res.send(err)
+                    })
+            )
             .catch((err) => {
                 res.send(err)
             })
@@ -148,10 +152,17 @@ class Controller {
     }
 
     static signUpProfilePost(req, res) {
+        // res.send(req.body)
         Profile.create(req.body)
             .then({})
             .catch((err) => {
-                res.send(err)
+                if(err.name === "SequelizeValidationError") {
+                    const errors = err.errors.map((el) => el.message)
+                    res.redirect(`/users/signUpProfile?errors=${errors}`)
+                }
+                else {
+                    res.send(err)
+                }
             })
 
         Profile.findAll({
@@ -176,25 +187,18 @@ class Controller {
                 res.redirect("/")
             )
             .catch((err) => {
-                res.send(err)
+                if(err.name === "SequelizeValidationError") {
+                    const errors = err.errors.map((el) => el.message)
+                    res.redirect(`/users/signUpUser?errors=${errors}`)
+                }
+                else {
+                    res.send(err)
+                }
             })
     }
 
     static diseaseChange(req, res) {
-        
-        Disease.findAll({
-            where: {
-                id: req.params.id
-            }
-        })
-        .then(data => {
-            // res.send(data)
-            res.render("diseaseChange", {data})
-
-        })
-        .catch((err) => {
-            res.send(err)
-        })
+        res.render("diseaseChange")
     }
 
     static diseaseChangePost(req, res) {
@@ -203,43 +207,20 @@ class Controller {
                 id: req.params.id
             }
         })
-            .then(
-                res.redirect("/diseases")
-            )
-            .catch((err) => {
-                res.send(err)
-            })
-    }
-
-    static medicineChange(req, res) {
-        
-        Medicine.findAll({
-            where: {
-                id: req.params.id
-            }
-        })
-        .then(data => {
-            res.render("medicineChange", {data})
-
-        })
+        .then(
+            res.redirect("/diseases")
+        )
         .catch((err) => {
-            res.send(err)
+            if(err.name === "SequelizeValidationError") {
+                const errors = err.errors.map((el) => el.message)
+                res.redirect(`/diseases/${id}/change?errors=${errors}`)
+            }
+            else {
+                res.send(err)
+            }
         })
     }
 
-    static medicineChangePost(req, res) {
-        Medicine.update(req.body, {
-            where: {
-                id: req.params.id
-            }
-        })
-            .then(
-                res.redirect("/medicines")
-            )
-            .catch((err) => {
-                res.send(err)
-            })
-    }
 }
 
 module.exports = Controller
