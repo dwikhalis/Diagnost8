@@ -18,5 +18,7 @@ diseaseRoute.get("/diseases/:id/change", Controller.diseaseChange)
 
 diseaseRoute.post("/diseases/:id/change", Controller.diseaseChangePost)
 
+diseaseRoute.get("/users/guest/diseases/", Controller.guestDisease)
+
 
 module.exports = diseaseRoute

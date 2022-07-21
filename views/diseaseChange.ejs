@@ -9,24 +9,24 @@
 </head>
 <body>
     <%- include("./navbar/bodynavbar.ejs"); %>
-    <%- include("./navbar/navbarFull.ejs"); %>
+    <%- include("./navbar/adminnavbar.ejs"); %>
     <div class="container">
         <div class="mt-4 ml-5 mr-5 mb-4">
     <h1>Diseases Change</h1>
-    <form action="/diseases/add" method="post">
+    <form action="/diseases/<%= data[0].id %>/change" method="post">
         <label for="name">Name</label><br>
-        <input class="form-control" type="text" name="name">
+        <input class="form-control" type="text" name="name" value="<%= data[0].name %>" required>
         <br><br>
         <label for="diagnosis">Diagnosis</label><br>
-        <input class="form-control" type="text" name="diagnosis">
+        <input class="form-control" type="text" name="diagnosis" value="<%= data[0].diagnosis %>" required>
         <br><br>
         <label for="procedure">Procedure</label><br>
-        <textarea class="form-control" name="procedure"></textarea>
+        <textarea class="form-control" name="procedure" required><%= data[0].procedure %></textarea>
         <br><br>
         <label for="status">Status</label><br>
-        <select class="form-control" name="status">
-            <option value="Deadly">Deadly</option>
-            <option value="Common">Common</option>
+        <select class="form-control" name="status" required>
+            <option value="Deadly" <%= data[0].status === "Deadly" ? "selected" : null %> >Deadly</option>
+            <option value="Common" <%= data[0].status === "Common" ? "selected" : null %> >Common</option>
         </select>
         <br><br>
         <input class="form-control" type="submit" value="Change Disease">

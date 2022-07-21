@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include("./navbar/headnavbar.ejs"); %>
+    <title>Profile List</title>
+</head>
+<body>
+    <%- include("./navbar/bodynavbar.ejs"); %>
+    <%- include("./navbar/adminnavbar.ejs"); %>
+    <div class="container">
+        <div class="mt-4 ml-5 mr-5 mb-4">
+    <h1>Profile List</h1>
+    <table class="table">
+        <th>Profile ID</th>
+        <th>Name</th>
+        <th>Gender</th>
+        <th>Age</th>
+        <th>Date of Birth</th>
+        <th>Email</th>
+        <th>Password</th>
+        <th>Role</th>
+        <% data.forEach(el => { %>
+            <tr>
+                <td><%= el.id %></td>
+                <td><%= el.Profile.name %></td>
+                <td><%= el.Profile.gender %></td>
+                <td><%= el.Profile.formatAge %></td>
+                <td><%= el.Profile.dateOfBirth.toLocaleDateString('id') %></td>
+                <td><%= el.email %></td>
+                <td><%= el.password %></td>
+                <td><%= el.role %></td>
+  
+        <% }); %>
+    </table>
+</div>
+</div>
+</body>
+</html>

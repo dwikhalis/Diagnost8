@@ -6,10 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%- include("./navbar/headnavbar.ejs"); %>
     <title>Diagnost8</title>
+    <style>
+        h1 {text-align: center;}
+        a {text-align: center;}
+        div {text-align: center;}
+        </style>
 </head>
 <body>
-    <%- include("./navbar/navbar.ejs"); %>
+    <%- include("./navbar/guestnavbar.ejs"); %>
+    <div class="container">
+        <div class="mt-4 ml-5 mr-5 mb-4">
     <h1>Diagnost8</h1>
-    <h1>Welcome " Name "</h1>
+    <h1>Welcome "Guest"</h1>
+    <a style="background-color:grey ;" class="btn btn-outline-primary text-light" type="button" href="/users/guest/diseases/">Diseases</a>
+</div>
+</div>
 </body>
 </html>
