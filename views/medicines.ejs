@@ -13,6 +13,11 @@
     <a href="/diseases/add"><button>Add Diseases</button></a>
     <a href="/medicines/add"><button>Add Medicine</button></a>
     <h1>Medicines</h1>
+    <form action="/medicines" method="get">
+        <input type="text" name="search" placeholder="by name">
+        <input type="submit" value="search">
+    </form>
+    <br>
     <table border="1">
         <th>Name</th>
         <th>Company</th>
@@ -25,6 +30,7 @@
                 <td><%= el.regDate %></td>
                 <td><%= el.description %></td>
                 <td><a href="/medicines/<%= el.id %>/delete"><button>Delete</button></a></td>
+                <td><a href="/medicines/<%= el.id %>/change"><button>Change</button></a></td>
             </tr>
         <% }); %>
     </table>

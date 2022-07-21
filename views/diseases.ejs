@@ -13,6 +13,11 @@
     <a href="/diseases/add"><button>Add Diseases</button></a>
     <a href="/medicines/add"><button>Add Medicine</button></a>
     <h1>Diseases</h1>
+    <form action="/diseases" method="get">
+        <input type="text" name="search" placeholder="by diagnosis">
+        <input type="submit" value="search">
+    </form>
+    <br>
     <table border="1">
         <th>Name</th>
         <th>Diagnosis</th>

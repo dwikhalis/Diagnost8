@@ -1,4 +1,5 @@
 
+const { Op } = require("sequelize")
 const { Disease, Log, Medicine, User, Profile } = require("../models")
 
 class Controller {
@@ -8,13 +9,31 @@ class Controller {
     }
 
     static diseaseList(req, res) {
-        Disease.findAll({})
-            .then(data => {
-                res.render("diseases", { data })
+
+        if (Object.values(req.query).length > 0) {
+            Disease.findAll({
+                where: {
+                    diagnosis: {
+                        [Op.iLike]: "%" + req.query.search + "%"
+                    }
+                }
             })
-            .catch((err) => {
-                res.send(err)
-            })
+                .then(data => {
+                    res.render("diseases", { data })
+                })
+                .catch((err) => {
+                    res.send(err)
+                })
+        } else {
+            Disease.findAll({})
+                .then(data => {
+                    res.render("diseases", { data })
+                })
+                .catch((err) => {
+                    res.send(err)
+                })
+        }
+
     }
 
     static diseaseDetail(req, res) {
@@ -50,13 +69,30 @@ class Controller {
     }
 
     static medicineList(req, res) {
-        Medicine.findAll({})
-            .then(data => {
-                res.render("medicines", { data })
+
+        if (Object.values(req.query).length > 0) {
+            Medicine.findAll({
+                where: {
+                    name: {
+                        [Op.iLike]: "%" + req.query.search + "%"
+                    }
+                }
             })
-            .catch((err) => {
-                res.send(err)
-            })
+                .then(data => {
+                    res.render("medicines", { data })
+                })
+                .catch((err) => {
+                    res.send(err)
+                })
+        } else {
+            Medicine.findAll({})
+                .then(data => {
+                    res.render("medicines", { data })
+                })
+                .catch((err) => {
+                    res.send(err)
+                })
+        }
     }
 
     static diseaseAdd(req, res) {
@@ -77,15 +113,7 @@ class Controller {
                 id: req.params.id
             }
         })
-            .then(
-                Disease.findAll({})
-                    .then(data => {
-                        res.render("diseases", { data })
-                    })
-                    .catch((err) => {
-                        res.send(err)
-                    })
-            )
+            .then(res.redirect("/diseases"))
             .catch((err) => {
                 res.send(err)
             })
@@ -109,15 +137,7 @@ class Controller {
                 id: req.params.id
             }
         })
-            .then(
-                Medicine.findAll({})
-                    .then(data => {
-                        res.render("medicines", { data })
-                    })
-                    .catch((err) => {
-                        res.send(err)
-                    })
-            )
+            .then(res.redirect("/medicines"))
             .catch((err) => {
                 res.send(err)
             })
@@ -128,7 +148,6 @@ class Controller {
     }
 
     static signUpProfilePost(req, res) {
-        // res.send(req.body)
         Profile.create(req.body)
             .then({})
             .catch((err) => {
@@ -162,24 +181,65 @@ class Controller {
     }
 
     static diseaseChange(req, res) {
-        res.render("diseaseChange")
-    }
-
-    static diseaseChangePost(req, res) {
-        console.log(req.body)
-        Disease.update(req.body, {
+        
+        Disease.findAll({
             where: {
                 id: req.params.id
             }
         })
-        .then(
-            res.redirect("/diseases")
-        )
+        .then(data => {
+            // res.send(data)
+            res.render("diseaseChange", {data})
+
+        })
         .catch((err) => {
             res.send(err)
         })
     }
 
+    static diseaseChangePost(req, res) {
+        Disease.update(req.body, {
+            where: {
+                id: req.params.id
+            }
+        })
+            .then(
+                res.redirect("/diseases")
+            )
+            .catch((err) => {
+                res.send(err)
+            })
+    }
+
+    static medicineChange(req, res) {
+        
+        Medicine.findAll({
+            where: {
+                id: req.params.id
+            }
+        })
+        .then(data => {
+            res.render("medicineChange", {data})
+
+        })
+        .catch((err) => {
+            res.send(err)
+        })
+    }
+
+    static medicineChangePost(req, res) {
+        Medicine.update(req.body, {
+            where: {
+                id: req.params.id
+            }
+        })
+            .then(
+                res.redirect("/medicines")
+            )
+            .catch((err) => {
+                res.send(err)
+            })
+    }
 }
 
 module.exports = Controller
