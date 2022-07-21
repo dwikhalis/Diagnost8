@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnost8</title>
+</head>
+<body>
+    <a href="/"><button>Home</button></a>
+    <a href="/diseases"><button>Diseases</button></a>
+    <a href="/medicines"><button>Medicines</button></a>
+    <a href="/diseases/add"><button>Add Diseases</button></a>
+    <a href="/medicines/add"><button>Add Medicine</button></a>
+    <h1>Diseases Change</h1>
+    <form action="/diseases/add" method="post">
+        <label for="name">Name</label><br>
+        <input type="text" name="name" required>
+        <br><br>
+        <label for="diagnosis">Diagnosis</label><br>
+        <input type="text" name="diagnosis" required>
+        <br><br>
+        <label for="procedure">Procedure</label><br>
+        <textarea name="procedure" required></textarea>
+        <br><br>
+        <label for="status">Status</label><br>
+        <select name="status" required>
+            <option value="Deadly">Deadly</option>
+            <option value="Common">Common</option>
+        </select>
+        <br><br>
+        <input type="submit" value="Change Disease">
+    </form>
+</body>
+</html>

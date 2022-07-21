@@ -14,10 +14,6 @@ module.exports = (sequelize, DataTypes) => {
       Disease.belongsToMany(models.Medicine, {
         through: models.Log,
       })
-      // ,
-      // Disease.belongsTo(models.Log, {
-      //   foreignKey: 'id'
-      // })
     }
   }
   Disease.init({

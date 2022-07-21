@@ -1,29 +1,20 @@
 [
     {
-        "name": "Daisey Boucher",
-        "dateOfBirth": "2022-03-17",
         "email": "dboucher0@furl.net",
-        "gender": "Female",
         "password": "Pc6fWi",
         "role": "Admin",
-        "clinicalLogId": 6
+        "ProfileId": 1
     },
     {
-        "name": "Gillian Coombs",
-        "dateOfBirth": "2022-06-26",
         "email": "gcoombs1@jimdo.com",
-        "gender": "Female",
         "password": "v604cCUGjf",
-        "role": "User",
-        "clinicalLogId": 4
+        "role": "Guest",
+        "ProfileId": 2
     },
     {
-        "name": "Hubie Southard",
-        "dateOfBirth": "2022-04-27",
         "email": "hsouthard2@go.com",
-        "gender": "Male",
         "password": "vROd17hG",
-        "role": "User",
-        "clinicalLogId": 11
+        "role": "Guest",
+        "ProfileId": 3
     }
 ]

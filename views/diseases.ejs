@@ -8,8 +8,10 @@
 </head>
 <body>
     <a href="/"><button>Home</button></a>
-    <a href="/diseases"><button>Diseases List</button></a>
+    <a href="/diseases"><button>Diseases</button></a>
     <a href="/medicines"><button>Medicines</button></a>
+    <a href="/diseases/add"><button>Add Diseases</button></a>
+    <a href="/medicines/add"><button>Add Medicine</button></a>
     <h1>Diseases</h1>
     <table border="1">
         <th>Name</th>
@@ -22,7 +24,9 @@
                 <td><%= el.diagnosis %></td>
                 <td><%= el.procedure %></td>
                 <td><%= el.status %></td>
-                <td><a href="/disease/<%= el.id %>"><button>Details</button></a></td>
+                <td><a href="/diseases/<%= el.id %>"><button>Details</button></a></td>
+                <td><a href="/diseases/<%= el.id %>/delete"><button>Delete</button></a></td>
+                <td><a href="/diseases/<%= el.id %>/change"><button>Change</button></a></td>
             </tr>
         <% }); %>
     </table>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnost8</title>
+</head>
+<body>
+    <a href="/"><button>Home</button></a>
+    <a href="/diseases"><button>Diseases</button></a>
+    <a href="/medicines"><button>Medicines</button></a>
+    <a href="/diseases/add"><button>Add Diseases</button></a>
+    <a href="/medicines/add"><button>Add Medicine</button></a>
+    <h1>SignUp</h1>
+    <form action="/users/signUpUser" method="post">
+        <label for="email">Email</label><br>
+        <input type="text" name="email" required>
+        <br><br>
+        <label for="password">Password</label><br>
+        <input type="password" name="password" required>
+        <br><br>
+        <label for="role">User Type</label><br>
+        <input type="radio" name="role" value="Admin">
+        <label for="role">Admin</label>
+        <input type="radio" name="role" value="Guest">
+        <label for="role">Guest</label><br>
+        <input name="ProfileId" type="text" value="<%= send.id %>" hidden>
+        <br><br>
+        <input type="submit" value="SignUp">
+    </form>
+
+</body>
+</html>

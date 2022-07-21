@@ -8,15 +8,6 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: {
-        type: Sequelize.STRING
-      },
-      gender: {
-        type: Sequelize.STRING
-      },
-      dateOfBirth: {
-        type: Sequelize.DATE
-      },
       email: {
         type: Sequelize.STRING
       },
@@ -26,8 +17,12 @@ module.exports = {
       role: {
         type: Sequelize.STRING
       },
-      clinicalLogId: {
-        type: Sequelize.INTEGER
+      ProfileId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Profiles',
+          key: 'id'
+        }
       },
       createdAt: {
         allowNull: false,

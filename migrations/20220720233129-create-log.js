@@ -13,24 +13,24 @@ module.exports = {
       },
       UserId: {
         type: Sequelize.INTEGER,
-        references: {
-          model: 'Users',
-          key: 'id'
-        }
+        // references: {
+        //   model: 'Users',
+        //   key: 'id'
+        // }
       },
       MedicineId: {
         type: Sequelize.INTEGER,
-        references: {
-          model: 'Medicines',
-          key: 'id'
-        }
+        // references: {
+        //   model: 'Medicines',
+        //   key: 'id'
+        // }
       },
       DiseaseId: {
         type: Sequelize.INTEGER,
-        references: {
-          model: 'Diseases',
-          key: 'id'
-        }
+        // references: {
+        //   model: 'Diseases',
+        //   key: 'id'
+        // }
       },
       createdAt: {
         allowNull: false,

@@ -8,7 +8,7 @@
 </head>
 <body>
     <a href="/"><button>Home</button></a>
-    <a href="/diseases"><button>Diseases List</button></a>
+    <a href="/diseases"><button>Diseases</button></a>
     <a href="/medicines"><button>Medicines</button></a>
     <h1><%= data[0].name %></h1>
     <table border="1">
@@ -19,7 +19,7 @@
             <tr>
                 <td><%= el.diagnosis %></td>
                 <td><%= el.procedure %></td>
-                <td><a href="/disease/<%= el.id %>/medicine"><button>See Meds</button></a></td>
+                <td><a href="/diseases/<%= el.id %>/medicine"><button>See Meds</button></a></td>
             </tr>
         <% }); %>
     </table>

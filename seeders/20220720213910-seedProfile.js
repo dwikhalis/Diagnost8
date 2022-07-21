@@ -3,7 +3,7 @@
 const fs = require('fs')
 
 module.exports = {
-  up (queryInterface, Sequelize) {
+  async up (queryInterface, Sequelize) {
     /**
      * Add seed commands here.
      *
@@ -13,18 +13,17 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-     let data = JSON.parse(fs.readFileSync("./data/user.json")).map(el => {
+     let data = JSON.parse(fs.readFileSync("./data/profile.json")).map(el => {
       return {
-        email: el.email,
-        password: el.password,
-        role: el.role,
-        ProfileId: el.ProfileId,
+        name: el.name,
+        gender: el.gender,
+        dateOfBirth: el.dateOfBirth,
         createdAt: new Date (),
         updatedAt: new Date (),
       }
     })
 
-    return queryInterface.bulkInsert('Users', data, {})
+    return queryInterface.bulkInsert('Profiles', data, {})
   },
 
   down (queryInterface, Sequelize) {
@@ -34,6 +33,7 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-     return queryInterface.bulkInsert('Users', null)
+     return queryInterface.bulkInsert('Profiles', null)
   }
 };
+
