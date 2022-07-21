@@ -13,11 +13,11 @@
     <div class="container">
         <div class="mt-4 ml-5 mr-5 mb-4">
     <h1>Diagnost8</h1>
-    <form action="" method="post">
+    <form action="/users/signIn" method="post">
         <label>Email</label>
-        <input class="form-control" type="email">
-        <label>password</label>
-        <input class="form-control" type="password">
+        <input class="form-control" type="email" name="email" required>
+        <label>Password</label>
+        <input class="form-control" type="password" name="password" required>
         <br>
         <input class="form-control" type="submit" value="Login">
     </form>

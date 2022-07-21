@@ -1,4 +1,7 @@
 'use strict';
+
+const { formatAge, formatDate } = require('../helpers/helper')
+
 const {
   Model
 } = require('sequelize');
@@ -14,6 +17,10 @@ module.exports = (sequelize, DataTypes) => {
       Medicine.belongsToMany(models.Disease, {
         through: models.Log,
       })
+    }
+
+    get formatDate() {
+      return formatDate(this.regDate)
     }
   }
   Medicine.init({
@@ -68,6 +75,11 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Medicine',
+    hooks: {
+      beforeCreate: function(medicine) {
+        medicine.company = `PT. ${medicine.company}`
+      }
+    }
   });
   return Medicine;
 };

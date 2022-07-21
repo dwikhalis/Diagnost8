@@ -1,4 +1,7 @@
 'use strict';
+
+const { formatAge, formatDate } = require('../helpers/helper')
+
 const {
   Model
 } = require('sequelize');
@@ -14,6 +17,14 @@ module.exports = (sequelize, DataTypes) => {
       Profile.hasOne(models.User, {
         foreignKey: 'ProfileId'
       })
+    }
+
+    get formatDate() {
+      return formatDate(this.regDate)
+    }
+
+    get formatAge() {
+      return formatAge(this.dateOfBirth)
     }
   }
   Profile.init(
