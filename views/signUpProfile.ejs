@@ -4,19 +4,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include("./navbar/headnavbar.ejs"); %>
     <title>Diagnost8</title>
 </head>
 <body>
-    <a href="/"><button>Home</button></a>
-    <a href="/diseases"><button>Diseases</button></a>
-    <a href="/medicines"><button>Medicines</button></a>
-    <a href="/diseases/add"><button>Add Diseases</button></a>
-    <a href="/medicines/add"><button>Add Medicine</button></a>
+    <%- include("./navbar/bodynavbar.ejs"); %>
+    <%- include("./navbar/homenavbar.ejs"); %>
+    <div class="container">
+        <div class="mt-4 ml-5 mr-5 mb-4">
     <h1>SignUp</h1>
     <form action="/users/signUpProfile" method="post">
         <label for="name">Name</label><br>
-        <input type="text" name="name" required>
-        <br><br>
+        <input class="form-control" type="text" name="name">
+        <br>
         <label for="gender">Gender</label><br>
         <input type="radio" name="gender" value="Male">
         <label for="Male">Male</label>
@@ -24,9 +24,11 @@
         <label for="Female">Female</label>
         <br><br>
         <label for="dateOfBirth">Date of Birth</label><br>
-        <input type="date" name="dateOfBirth" required>
+        <input class="form-control" type="date" name="dateOfBirth">
         <br><br>
-        <input type="submit" value="Next">
+        <input class="form-control" type="submit" value="Next">
     </form>
+</div>
+</div>
 </body>
 </html>

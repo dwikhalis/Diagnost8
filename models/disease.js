@@ -17,10 +17,54 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Disease.init({
-    name: DataTypes.STRING,
-    diagnosis: DataTypes.STRING,
-    procedure: DataTypes.STRING,
-    status: DataTypes.STRING
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: "name is required"
+        },
+        notNull: {
+          msg: "name is required"
+        }
+      }
+    },
+    diagnosis: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: "diagnosis is required"
+        },
+        notNull: {
+          msg: "diagnosis is required"
+        }
+      }
+    },
+    procedure: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: "procedure is required"
+        },
+        notNull: {
+          msg: "procedure is required"
+        }
+      }
+    },
+    status: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: "status is required"
+        },
+        notNull: {
+          msg: "status is required"
+        }
+      }
+    }
   }, {
     sequelize,
     modelName: 'Disease',

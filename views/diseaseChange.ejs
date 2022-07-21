@@ -4,32 +4,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include("./navbar/headnavbar.ejs"); %>
     <title>Diagnost8</title>
 </head>
 <body>
-    <a href="/"><button>Home</button></a>
-    <a href="/diseases"><button>Diseases</button></a>
-    <a href="/medicines"><button>Medicines</button></a>
-    <a href="/diseases/add"><button>Add Diseases</button></a>
-    <a href="/medicines/add"><button>Add Medicine</button></a>
+    <%- include("./navbar/bodynavbar.ejs"); %>
+    <%- include("./navbar/navbarFull.ejs"); %>
+    <div class="container">
+        <div class="mt-4 ml-5 mr-5 mb-4">
     <h1>Diseases Change</h1>
-    <form action="/diseases/<%= data[0].id %>/change" method="post">
+    <form action="/diseases/add" method="post">
         <label for="name">Name</label><br>
-        <input type="text" name="name" value="<%= data[0].name %>" required>
+        <input class="form-control" type="text" name="name">
         <br><br>
         <label for="diagnosis">Diagnosis</label><br>
-        <input type="text" name="diagnosis" value="<%= data[0].diagnosis %>" required>
+        <input class="form-control" type="text" name="diagnosis">
         <br><br>
         <label for="procedure">Procedure</label><br>
-        <textarea name="procedure" required><%= data[0].procedure %></textarea>
+        <textarea class="form-control" name="procedure"></textarea>
         <br><br>
         <label for="status">Status</label><br>
-        <select name="status" required>
-            <option value="Deadly" <%= data[0].status === "Deadly" ? "selected" : null %> >Deadly</option>
-            <option value="Common" <%= data[0].status === "Common" ? "selected" : null %> >Common</option>
+        <select class="form-control" name="status">
+            <option value="Deadly">Deadly</option>
+            <option value="Common">Common</option>
         </select>
         <br><br>
-        <input type="submit" value="Change Disease">
+        <input class="form-control" type="submit" value="Change Disease">
     </form>
+</div>
+</div>
+
 </body>
 </html>

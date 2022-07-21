@@ -10,10 +10,6 @@ medicineRoute.post("/medicines/add", Controller.medicineAddPost)
 
 medicineRoute.get("/medicines/:id/delete", Controller.medicineDelete)
 
-medicineRoute.get("/medicines/:id/change", Controller.medicineChange)
-
-medicineRoute.post("/medicines/:id/change", Controller.medicineChangePost)
-
 
 
 module.exports = medicineRoute

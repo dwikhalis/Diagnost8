@@ -4,14 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include("./navbar/headnavbar.ejs"); %>
     <title>Medicine</title>
 </head>
 <body>
-    <a href="/"><button>Home</button></a>
-    <a href="/diseases"><button>Diseases</button></a>
-    <a href="/medicines"><button>Medicines</button></a>
+    <%- include("./navbar/navbar.ejs"); %>
     <h1>Medicine</h1>
-    <table border="1">
+    <table class="table">
         <th>Name</th>
         <th>Company</th>
         <th>Registered at</th>

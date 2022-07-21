@@ -16,10 +16,43 @@ module.exports = (sequelize, DataTypes) => {
       })
     }
   }
-  Profile.init({
-    name: DataTypes.STRING,
-    gender: DataTypes.STRING,
-    dateOfBirth: DataTypes.DATE
+  Profile.init(
+    {name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: "name is required"
+        },
+        notNull: {
+          msg: "name is required"
+        }
+      }
+    },
+    gender: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: "gender is required"
+        },
+        notNull: {
+          msg: "gender is required"
+        }
+      }
+    },
+    dateOfBirth: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: "date is required"
+        },
+        notNull: {
+          msg: "date is required"
+        }
+      }
+    }
   }, {
     sequelize,
     modelName: 'Profile',
