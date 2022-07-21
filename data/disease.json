@@ -1,0 +1,32 @@
+[
+    {
+        "name": "Callipepla gambelii",
+        "diagnosis": "Juvenile arthritis, unspecified, wrist",
+        "status": "Deadly",
+        "procedure": "Other repair of abdominal wall"
+    },
+    {
+        "name": "Haliaetus leucogaster",
+        "diagnosis": "Shock due to being struck by lightning, sequela",
+        "status": "Common",
+        "procedure": "Non-invasive placement of bone growth stimulator"
+    },
+    {
+        "name": "Bos taurus",
+        "diagnosis": "Other fractures of lower end of left radius, subsequent encounter for open fracture type IIIA, IIIB, or IIIC with delayed healing",
+        "status": "Deadly",
+        "procedure": "Computer assisted surgery with MR/MRA"
+    },
+    {
+        "name": "Lamprotornis superbus",
+        "diagnosis": "Ankylosing hyperostosis [Forestier], lumbar region",
+        "status": "Deadly",
+        "procedure": "Thoracentesis"
+    },
+    {
+        "name": "Trichoglossus haematodus moluccanus",
+        "diagnosis": "Drug or chemical induced diabetes mellitus with severe nonproliferative diabetic retinopathy without macular edema, bilateral",
+        "status": "Common",
+        "procedure": "Excision of lesion of eye, unspecified structure"
+    }
+]

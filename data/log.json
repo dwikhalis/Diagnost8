@@ -1,0 +1,32 @@
+[
+    {
+        "logDate": "2020-12-23",
+        "UserId": 1,
+        "MedicineId": 1,
+        "DiseaseId": 2
+    },
+    {
+        "logDate": "2019-10-03",
+        "UserId": 1,
+        "MedicineId": 2,
+        "DiseaseId": 3
+    },
+    {
+        "logDate": "2000-02-23",
+        "UserId": 2,
+        "MedicineId": 3,
+        "DiseaseId": 4
+    },
+    {
+        "logDate": "2001-01-02",
+        "UserId": 2,
+        "MedicineId": 4,
+        "DiseaseId": 5
+    },
+    {
+        "logDate": "2021-11-23",
+        "UserId": 3,
+        "MedicineId": 5,
+        "DiseaseId": 6
+    }
+]

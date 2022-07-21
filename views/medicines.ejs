@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicines</title>
+</head>
+<body>
+    <a href="/"><button>Home</button></a>
+    <a href="/diseases"><button>Diseases List</button></a>
+    <a href="/medicines"><button>Medicines</button></a>
+    <h1>Medicines</h1>
+    <table border="1">
+        <th>Name</th>
+        <th>Company</th>
+        <th>Registered at</th>
+        <th>Description</th>
+        <% data.forEach(el => { %>
+            <tr>
+                <td><%= el.name %></td>
+                <td><%= el.company %></td>
+                <td><%= el.regDate %></td>
+                <td><%= el.description %></td>
+            </tr>
+        <% }); %>
+    </table>
+</body>
+</html>
