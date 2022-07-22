@@ -14,6 +14,8 @@ medicineRoute.get("/medicines/:id/change", Controller.medicineChange)
 
 medicineRoute.post("/medicines/:id/change", Controller.medicineChangePost)
 
+medicineRoute.get("/users/guest/medicines/", Controller.guestMedicines)
+
 
 
 module.exports = medicineRoute

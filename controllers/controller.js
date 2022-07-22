@@ -95,7 +95,8 @@ class Controller {
                     name: {
                         [Op.iLike]: "%" + req.query.search + "%"
                     }
-                }
+                },
+                order: [['id', 'desc']]
             })
                 .then(data => {
                     res.render("profileList", { data })
@@ -106,6 +107,7 @@ class Controller {
         } else {
             User.findAll({
                 include: Profile,
+                order: [['id', 'desc']]
             })
                 .then(data => {
                     // res.send(data)
@@ -125,7 +127,8 @@ class Controller {
                     diagnosis: {
                         [Op.iLike]: "%" + req.query.search + "%"
                     }
-                }
+                },
+                order: [['id', 'desc']]
             })
                 .then(data => {
                     res.render("diseases", { data })
@@ -134,7 +137,9 @@ class Controller {
                     res.send(err)
                 })
         } else {
-            Disease.findAll({})
+            Disease.findAll({
+                order: [['id', 'desc']]
+            })
                 .then(data => {
                     res.render("diseases", { data })
                 })
@@ -151,7 +156,8 @@ class Controller {
                     diagnosis: {
                         [Op.iLike]: "%" + req.query.search + "%"
                     }
-                }
+                },
+                order: [['id', 'desc']]
             })
                 .then(data => {
                     res.render("guestDiseases", { data })
@@ -160,7 +166,9 @@ class Controller {
                     res.send(err)
                 })
         } else {
-            Disease.findAll({})
+            Disease.findAll({
+                order: [['id', 'desc']]
+            })
                 .then(data => {
                     res.render("guestDiseases", { data })
                 })
@@ -190,7 +198,8 @@ class Controller {
             include: Medicine,
             where: {
                 id: req.params.id
-            }
+            },
+            order: [['id', 'desc']]
         })
             .then(data => {
 
@@ -209,7 +218,8 @@ class Controller {
                     name: {
                         [Op.iLike]: "%" + req.query.search + "%"
                     }
-                }
+                },
+                order: [['id', 'desc']]
             })
                 .then(data => {
                     res.render("medicines", { data })
@@ -218,9 +228,41 @@ class Controller {
                     res.send(err)
                 })
         } else {
-            Medicine.findAll({})
+            Medicine.findAll({
+                order: [['id', 'desc']]
+            })
                 .then(data => {
                     res.render("medicines", { data })
+                })
+                .catch((err) => {
+                    res.send(err)
+                })
+        }
+    }
+
+    static guestMedicines(req, res) {
+        if (Object.values(req.query).length > 0) {
+            Medicine.findAll({
+                where: {
+                    name: {
+                        [Op.iLike]: "%" + req.query.search + "%"
+                    }
+                },
+                order: [['id', 'desc']]
+            })
+                .then(data => {
+                    res.render("guestMedicines", { data })
+                })
+                .catch((err) => {
+                    res.send(err)
+                })
+        } else {
+            Medicine.findAll({
+                order: [['id', 'desc']]
+            })
+
+                .then(data => {
+                    res.render("guestMedicines", { data })
                 })
                 .catch((err) => {
                     res.send(err)

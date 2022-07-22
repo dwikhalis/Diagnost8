@@ -5,30 +5,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%- include("./navbar/headnavbar.ejs"); %>
-    <title>Disease</title>
+    <title>Medicines</title>
 </head>
 <body>
     <%- include("./navbar/bodynavbar.ejs"); %>
     <%- include("./navbar/guestnavbar.ejs"); %>
     <div class="container">
         <div class="mt-4 ml-5 mr-5 mb-4">
-    <h1>Diseases</h1>
-    <form action="/users/guest/diseases/" method="get">
-        <input type="text" name="search" placeholder="by diagnosis">
+    <h1>Medicines</h1>
+    <form action="/users/guest/medicines/" method="get">
+        <input type="text" name="search" placeholder="by name">
         <input type="submit" value="search">
     </form>
     <table class="table">
         <th>Name</th>
-        <th>Diagnosis</th>
-        <th>Procedure</th>
-        <th>Status</th>
+        <th>Company</th>
+        <th>Registered at</th>
+        <th>Description</th>
         <% data.forEach(el => { %>
             <tr>
                 <td><%= el.name %></td>
-                <td><%= el.diagnosis %></td>
-                <td><%= el.procedure %></td>
-                <td><%= el.status %></td>
-                <td><a href="/diseases/<%= el.id %>"><button>Details</button></a></td>
+                <td><%= el.company %></td>
+                <td><%= el.formatDate %></td>
+                <td><%= el.description %></td>
             </tr>
         <% }); %>
     </table>
