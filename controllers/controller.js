@@ -39,7 +39,7 @@ class Controller {
                 User.create(userInput)
                     .then((user) => {
                         // todo add session
-                        res.redirect("/users/admin")
+                        res.redirect("/")
                     })
                     .catch((err) => {
                         if(err.name === "SequelizeValidationError") {
